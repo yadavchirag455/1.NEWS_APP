@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_application_practise/components/custom_searchbar.dart';
 import '../backend/function.dart';
 import '../components/appbar.dart';
 import '../components/newsbox.dart';
@@ -29,8 +30,9 @@ class _HomeState extends State<Home> {
         appBar: appbar(),
         body: Column(
           children: [
-            // CustomSearchBar(),
-            SearchBar(),
+            // SearchBar(),
+            CustomSearchBar(),
+
             Expanded(
               child: Container(
                   width: w,
@@ -41,6 +43,7 @@ class _HomeState extends State<Home> {
                         return ListView.builder(
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
+                              // print('chirag' + snapshot.data![index]['url']);
                               return NewsBox(
                                 url: snapshot.data![index]['url'],
                                 imageurl:

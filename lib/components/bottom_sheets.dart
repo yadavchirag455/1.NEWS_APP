@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/text.dart';
@@ -55,38 +56,40 @@ class MyBottomSheetLayout extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          BottomSheetImage(imageurl: imageurl, title: title),
-          Container(
+    return SingleChildScrollView(
+      child: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            BottomSheetImage(imageurl: imageurl, title: title),
+            Container(
+                padding: const EdgeInsets.all(10),
+                child: modifiedText(
+                    text: description, size: 16, color: Colors.white)),
+            Container(
               padding: const EdgeInsets.all(10),
-              child: modifiedText(
-                  text: description, size: 16, color: Colors.white)),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: RichText(
-              text: TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                      text: 'Read Full Article',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          _launchURL(url);
-                        },
-                      style: GoogleFonts.lato(
-                        color: Colors.blue.shade400,
-                      )),
-                ],
+              child: RichText(
+                text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Read Full Article',
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            _launchURL(Uri.parse(url));
+                          },
+                        style: GoogleFonts.lato(
+                          color: Colors.blue.shade400,
+                        )),
+                  ],
+                ),
               ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -4,7 +4,7 @@ import '../backend/function.dart';
 import '../utils/colours.dart';
 
 class CustomSearchBar extends StatefulWidget {
-  const CustomSearchBar({Key? APIkey}) : super(key: APIkey); //
+  CustomSearchBar({Key? APIkey}) : super(key: APIkey); //
   static TextEditingController searchcontroller =
       TextEditingController(text: '');
 
@@ -17,29 +17,24 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          height: 50,
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.only(left: 20),
-          decoration: BoxDecoration(
-              color: AppColors.darkgrey,
-              borderRadius: BorderRadius.circular(50)),
-          child: Center(
-              child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(width: 10),
-              Expanded(
-                  child: TextField(
-                controller: CustomSearchBar.searchcontroller,
-                decoration: InputDecoration(
-                    hintText: 'Search a Keyword or a Phrase',
-                    hintStyle: GoogleFonts.lato(),
-                    border: InputBorder.none),
-              ))
-            ],
-          )),
+        Expanded(
+          child: Container(
+            // width: 50,
+            height: 50,
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.only(left: 20),
+            decoration: BoxDecoration(
+                color: AppColors.darkgrey,
+                borderRadius: BorderRadius.circular(50)),
+            child: Center(
+                child: TextField(
+              controller: CustomSearchBar.searchcontroller,
+              decoration: InputDecoration(
+                  hintText: 'Search a Keyword or a Phrase',
+                  hintStyle: GoogleFonts.lato(),
+                  border: InputBorder.none),
+            )),
+          ),
         ),
         InkWell(
           onTap: () {

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../components/searchbar.dart';
+import '../components/custom_searchbar.dart';
 import '../utils/keys.dart';
 
 Future<List> fetchnews() async {
@@ -12,7 +12,9 @@ Future<List> fetchnews() async {
             CustomSearchBar.searchcontroller.text),
   );
   Map result = jsonDecode(response.body);
+  // print(result);
   print('Fetched');
+  print(result['articles']);
 
   return (result['articles']);
 }
